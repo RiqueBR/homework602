@@ -73,8 +73,13 @@ describe("Park", function(){
     assert.strictEqual(actual, 78)
   })
 
-  xit('Calculate the total number of visitors per year', function(){
-
+  it('Calculate the total number of visitors per year', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    visitsPerYear = park.visitsPerDay * 365
+    const actual = visitsPerYear
+    assert.strictEqual(actual, 28470)
   })
 
   xit('Calculate the total revenue from ticket sales for one year', function(){
