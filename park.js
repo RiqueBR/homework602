@@ -4,6 +4,10 @@ const Park = function(name, ticket_price, dino_collection){
   this.dino_collection = []
 }
 
+// Here the empty array doesn't need to be added as a place holder because it's just
+// an empty array.
+
+
 module.exports = Park;
 
 
@@ -16,11 +20,16 @@ Park.prototype.addDinosaur = function (dinosaur) {
 };
 
 Park.prototype.removeDinosaur = function (dinosaur) {
-  const indexOfDinosaur = this.dino_collection.indexOf(dinosaur)
+  let indexOfDinosaur = this.dino_collection.indexOf(dinosaur)
   this.dino_collection.splice(1, indexOfDinosaur)
 };
 
 Park.prototype.most_visited = function () {
+  // declare a highest variable
+  // loop through all dinosaur
+  // compare current dino to highest, replace highest if higher
+  // return highest.
+
   let highest_number = this.dino_collection[0]
   for( let dinosaur of this.dino_collection){
     if (dinosaur.visitor_average > highest_number.visitor_average)
@@ -31,11 +40,17 @@ Park.prototype.most_visited = function () {
 
 
 Park.prototype.find_by_species = function (species) {
-  for(let dinosaur of this.dino_collection){
-    if (dinosaur.species === species)
-    return dinosaur
+  // declare an array of filtered dinos
+  let filtered_dinos = []
+  // loop through all dinos
+  for(let currentDinosaur of this.dino_collection){
+    // if species === species to find, add to array
+    if(currentDinosaur.species.toLowerCase() === species.toLowerCase()){
+      filtered_dinos.push(currentDinosaur)
+    }
   }
-};
+  return filtered_dinos
+}
 
 Park.prototype.visitsPerDay = function () {
   let visitsToday = 0
@@ -45,11 +60,18 @@ Park.prototype.visitsPerDay = function () {
   return visitsToday
 };
 
-// Park.prototype.visitsPerYear = function () {
-//   let visitsToday = 0
-//   for (let dinosaur of this.dino_collection){
-//     visitsToday += dinosaur.visitor_average
-//   }
-//   visitsPerDay = visitsToday * 365
-//   return visitsPerYear
-// };
+Park.prototype.visitsPerYear = function () {
+  return this.visitsPerDay() * 365;
+}
+
+
+Park.prototype.getYearlyIncome = function () {
+  return this.ticket_price * this.visitsPerYear()
+};
+
+
+Park.prototype.kill_all = function (species) {
+  for(let i = this.dino_collection.length - 1; i >= 0; i--){
+
+  }
+};

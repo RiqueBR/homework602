@@ -62,7 +62,7 @@ describe("Park", function(){
     park.addDinosaur(dinosaur2);
     park.addDinosaur(dinosaur3);
     const actual = park.find_by_species('Brachiosaurus');
-    assert.deepStrictEqual(actual, dinosaur1)
+    assert.deepStrictEqual(actual, [dinosaur1])
   })
 
   it('Calculate the total number of visitors per day', function(){
@@ -77,12 +77,19 @@ describe("Park", function(){
     park.addDinosaur(dinosaur1);
     park.addDinosaur(dinosaur2);
     park.addDinosaur(dinosaur3);
-    visitsPerYear = park.visitsPerDay * 365
-    const actual = visitsPerYear
+    const actual = park.visitsPerYear()
     assert.strictEqual(actual, 28470)
   })
 
   xit('Calculate the total revenue from ticket sales for one year', function(){
+
+  })
+
+  xit('Remove all dinosaurs of a particular species', function(){
+
+  })
+
+  xit('get an object with diet types and the number of dinos with that type of diet', function(){
 
   })
 })
